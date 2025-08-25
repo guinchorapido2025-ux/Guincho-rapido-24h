@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guincho Rápido</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    header {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid red;
+    }
+    header h1 {
+      color: #fff;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    /* Carrossel */
+    .carousel {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 300%;
+    }
+    .slides img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    .navigation {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .prev, .next {
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    section {
+      padding: 30px;
+      text-align: center;
+    }
+    h2 {
+      color: red;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+    ul li {
+      margin: 10px 0;
+    }
+
+    .mapa {
+      margin: 20px auto;
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      border: 2px solid red;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid red;
+    }
+    footer a {
+      color: red;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Guincho Rápido 24h</h1>
+    <p>Caxias do Sul e região</p>
+  </header>
+
+  <!-- Carrossel -->
+  <div class="carousel">
+    <div class="slides" id="slides">
+      <img src="img1.png" alt="Guincho rápido 1">
+      <img src="img2.jpeg" alt="Guincho rápido 2">
+      <img src="img3.jpeg" alt="Guincho rápido 3">
+    </div>
+    <div class="navigation">
+      <button class="prev" onclick="mudarSlide(-1)">❮</button>
+      <button class="next" onclick="mudarSlide(1)">❯</button>
+    </div>
+  </div>
+
+  <section>
+    <h2>Serviços</h2>
+    <ul>
+      <li>🚨 Auto socorro 24 horas</li>
+      <li>🚗 Automóveis, motos, tratores e implementos</li>
+      <li>📦 Cargas diversas</li>
+      <li>🚚 Fretes, coletas e entregas</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sobre nós</h2>
+    <p>Somos uma empresa familiar, com foco em excelência, qualidade e rapidez.  
+    Nosso objetivo é atender você no momento em que mais precisa, oferecendo confiança e agilidade.</p>
+  </section>
+
+  <section>
+    <h2>Onde estamos</h2>
+    <iframe class="mapa" 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3466.2843899165917!2d-51.1875!3d-29.1678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951ecf52be86a3c7%3A0x8e0d6d5d9a49e5e9!2sCaxias%20do%20Sul%20-%20RS!5e0!3m2!1spt-BR!2sbr!4v1698240000000!5m2!1spt-BR!2sbr" 
+      allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <footer>
+    <p>📞 Ligue agora: <a href="tel:+5554991934029">(54) 99193-4029</a></p>
+  </footer>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementById("slides");
+    const totalSlides = slides.children.length;
+
+    function mudarSlide(n) {
+      slideIndex = (slideIndex + n + totalSlides) % totalSlides;
+      slides.style.transform = translateX(-${slideIndex * 100}%);
+    }
+
+    // Troca automática a cada 5s
+    setInterval(() => mudarSlide(1), 5000);
+  </script>
+</body>
+</html>
